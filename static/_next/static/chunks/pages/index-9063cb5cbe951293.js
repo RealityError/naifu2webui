@@ -11413,7 +11413,7 @@
 				e.stableDiffusion = "stable-diffusion", e.naiDiffusion = "nai-diffusion", e.safeDiffusion = "safe-diffusion", e.waifuDiffusion = "waifu-diffusion", e.naiDiffusionFurry = "nai-diffusion-furry", e.dalleMini = "dalle-mini"
 			}(tu || (tu = {})),
 			function(e) {
-				e.plms = "plms", e.ddim = "ddim", e.kEuler = "k_euler", e.kEulerAncestral = "k_euler_ancestral", e.kHuen = "k_heun", e.kDpm2 = "k_dpm_2", e.kDpm2Ancestral = "k_dpm_2_ancestral", e.kLms = "k_lms"
+				e.plms = "plms", e.ddim = "ddim", e.kEuler = "k_euler", e.kEulerAncestral = "Euler a", e.kHuen = "k_heun", e.kDpm2 = "k_dpm_2", e.kDpm2Ancestral = "k_dpm_2_ancestral", e.kLms = "k_lms"
 			}(nu || (nu = {}));
 			var ou = n(5402),
 				au = "/_next/static/media/directional_arrow_down.d4fa840f.svg",
@@ -25771,25 +25771,31 @@
 					}), e
 				}), []),
 				NS = [{
-					label: "推荐",
+					label: "推荐(速度最快，效果优良)",
 					options: [{
-						name: "K Euler Ancestral",
-						value: nu.kEulerAncestral
+						name: "Euler a",
+						value: "Euler a"
 					}, {
-						name: "K Euler",
-						value: nu.kEuler
+						name: "Euler",
+						value: "Euler"
 					}, {
-						name: "K LMS",
-						value: nu.kLms
-					}]
-				}, {
-					label: "其它",
-					options: [{
-						name: "PLMS",
-						value: nu.plms
+						name: "LMS",
+						value: "LMS"
 					}, {
 						name: "DDIM",
-						value: nu.ddim
+						value: "DDIM"
+					}]
+				}, {
+					label: "其它(对部分内容有优化)",
+					options: [{
+						name: "DPM2",
+						value: "DPM2"
+					}, {
+						name: "DPM++ SDE Karras",
+						value: "DPM++ SDE Karras"
+					}, {
+						name: "PLMS",
+						value: "PLMS"
 					}]
 				}];
 

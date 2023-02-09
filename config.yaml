@@ -28,13 +28,13 @@ SAVE: true
 #启用数据库
 #这里是预留给我机器人的接口，所以，如果你不会用的话，就不要使用啦！
 sql: 
-  open: "ON"
+  open: "OFF"
   name: "whitecat"
 
 
 
 #日志等级
-log_level: "DEBUG"
+log_level: "INFO"
 
 #是否将web_server信息写入日志
 #注意！此方法将导致命令行不再显示fastapi的信息

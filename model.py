@@ -1,3 +1,7 @@
+'''
+存储naifu端生成的基础类，可以视为中间件，将会在naifu2webui中转化为webuiapi类
+'''
+
 
 from pydantic import BaseModel
 from typing import List

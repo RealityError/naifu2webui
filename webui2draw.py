@@ -1,11 +1,8 @@
-
-
 import requests
-import base64
-import hashlib
-from log import logger
-from basetype import GenerationRequest
 
+from log import logger
+from model import GenerationRequest
+from config import config
 
 
 class webui_(object):
@@ -13,8 +10,9 @@ class webui_(object):
     data: dict
     api_web: str
 
-    def __init__(self, webui_api, request: GenerationRequest) -> None:
-        self.api_web = webui_api
+    def __init__(self,request: GenerationRequest) -> None:
+        #用http协议
+        self.api_web = "http://"+config["webui_api"]
         self.data = {
             # webui高清修复选项
             "enable_hr": False,
@@ -68,21 +66,7 @@ class webui_(object):
         self.api_web = self.api_web+"/sdapi/v1/txt2img"
     def generate(self) -> str:
         #初始变量
-        images_encoded = []
-        data = ""
-        ptr = 0
-        
         req = requests.post(url = self.api_web,json=self.data)
         if str(req) == "<Response [200]>":
             img_data = req.json()
-            for i in img_data['images']:
-                image = i
-                image_s = base64.b64decode(image)   
-                hash = str(hashlib.md5(image_s).hexdigest())
-                with open(r"output/"+hash +".txt", "wb") as fh:
-                    fh.write(image_s)
-                images_encoded.append(image)
-        for x in images_encoded:
-            ptr += 1
-            data+= ("event: newImage\nid: {}\ndata:{}\n\n").format(ptr, x)    
-        return data
+        return img_data['images']

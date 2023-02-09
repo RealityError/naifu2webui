@@ -128,12 +128,12 @@ async def generate(request: GenerationRequest):
             if "token" in tmp_str:
                 user_token = tmp_str.split(":")[1]
                 #logger.debug("测试数值："+user_token)
-                tmp = sql.Query_sql("token2user",user_token)[0]
-                if tmp == None:
+                if sql.Query_sql("token2user",user_token) == None:
                     return Response(content=token_png, media_type="text/event-stream")
+                
                 #移除特殊数值
                 request.prompt = request.prompt.replace(request.prompt[lst[0]:lst[1]+1],"")
-                
+                logger.debug( request.prompt)
         user_picnum = sql.Query_sql("token2picnum",user_token)[0]
         user_picnum_new = user_picnum + request.n_samples
         sql.execute_sql("change_user_picnum",[str(user_picnum_new),user_token])
